@@ -1,5 +1,5 @@
 .background-gambar{
-    background-image: url("../../assets/img/background.jpg");
+    background-image: url("/static/img/background.jpg");
     width: 100%;
     min-height: 100vh;
     margin: 0;
@@ -24,7 +24,7 @@
 }
 .calculate-box{
     background-color: white;
-    height: 80vh;
+    min-height: 50vh;
     width: 100%;
 }
 
