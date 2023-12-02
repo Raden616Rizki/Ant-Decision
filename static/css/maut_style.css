@@ -1,5 +1,5 @@
 .background-gambar{
-    background-image: url("../../assets/img/background.jpg");
+    background-image: url("../img/background.jpg");
     width: 100%;
     min-height: 100vh;
     margin: 0;
@@ -24,13 +24,13 @@
 }
 .calculate-box{
     background-color: white;
-    height: 80vh;
+    min-height: 50vh;
     width: 100%;
 }
 
 .about {
     background-color: #5FBDFF;
-    min-height: 100vh;
+    min-height: 70vh;
     width: 100%;
     margin: 0;
     position: relative;
@@ -44,8 +44,38 @@
 
 .contact{
     background-color: #3A3A3A;
-    min-height: 60vh;
+    min-height: 30vh;
     width: 100%;
     margin: 0;
     position: relative;
+}
+
+.logo-about{
+    width: 80px;
+    height: 80px;
+}
+
+body{
+    /* font-family: 'Aclonica', sans-serif; */
+    font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.navbar{
+    font-family: 'Aclonica',sans-serif;
+}
+
+.judul{
+    font-family: 'Aclonica', sans-serif;
+}
+
+.judul-about{
+    font-family: 'Aclonica', sans-serif;
+}
+
+.judul-contact{
+    font-family: 'Aclonica', sans-serif;
+}
+
+.judul-logo{
+    font-family: 'Aclonica', sans-serif;
 }
