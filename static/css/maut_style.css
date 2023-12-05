@@ -1,9 +1,25 @@
+.andes-button {
+    color: white;
+    background-color: #7B66FF;
+    opacity: 0.75;
+}
+
+.andes-button:hover {
+    color: white;
+    background-color: #7B66FF;
+    opacity: 1;
+}
+
 .background-gambar{
     background-image: url("../img/background.jpg");
     width: 100%;
     min-height: 100vh;
     margin: 0;
     background-size: 100%;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-dark);
 }
 
 .utama{
@@ -78,4 +94,12 @@ body{
 
 .judul-logo{
     font-family: 'Aclonica', sans-serif;
+}
+
+.small-box {
+    width: 62px;
+}
+
+.super-small-box {
+    width: 54px;
 }
