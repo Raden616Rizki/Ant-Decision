@@ -68,3 +68,25 @@ function change_matrix_shape() {
         $('#initial-weight').append(temp_html_weight)
     }
 }
+
+function open_detail_calculation(id) {
+    $(`#detail-${id}`).show()
+
+    $(`#detail-button-${id}`).empty()
+
+    let temp_html = `
+        <button type="button" class="btn andes-button" onclick="close_detail_calculation(${id})">Sembunyikan Kalkulasi</button>
+    `
+    $(`#detail-button-${id}`).append(temp_html)
+}
+
+function close_detail_calculation(id) {
+    $(`#detail-${id}`).hide()
+
+    $(`#detail-button-${id}`).empty()
+
+    let temp_html = `
+        <button type="button" class="btn andes-button" onclick="open_detail_calculation(${id})">Detail Kalkulasi</button>
+    `
+    $(`#detail-button-${id}`).append(temp_html)
+}
