@@ -21,38 +21,40 @@
 </head>
 
 <body>
-    <div class="utama">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top bg-opacity-50">
+    <section id="scrollspyHeading1" class="background-gambar">
+        <nav class="navbar navbar-expand-lg bg-info sticky-top bg-opacity-50">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse justify-content-evenly" id="navbarNav">
-                    <ul class="navbar-nav">
+                <a class="navbar-brand" href="#"><img src="/static/img/logo.png" alt="" class="rounded-circle logo-about" style="background-color: #000"></a>
+                <div class="collapse navbar-collapse justify-content-evenly me-5 pe-4">
+                    <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link text-light" aria-current="page" href="#scrollspyHeading1">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Calculate</a>
+                            <a class="nav-link text-light" href="#scrollspyHeading2">Calculate</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link text-light" href="#scrollspyHeading3">About</a>
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
-        <div class="background-gambar d-flex align-items-center justify-content-center text-light">
-            <center>
+        <div class="d-flex align-items-center justify-content-center text-light my-5" style="min-height: 80vh">
+            <center class="my-5">
                 <div class="judul">
                     <h1>MULTI ATTRIBUTE UTILITY THEORY</h1>
                     <br>
                     <h4 class="judul">
                         Calculator
                     </h4>
-
+    
                     <h4></h4>
-                    <button type="button" class="btn btn-light opacity-75">Go!</button>
+                    <a type="button" class="btn btn-light opacity-75 text-decoration-none link-dark px-5" href="#scrollspyHeading2">GO!</a>
                 </div>
             </center>
         </div>
-        <div class="calculate">
+        <div id="scrollspyHeading2" class="calculate">
             <div class="calculate-box p-4 shadow-sm" style="border-radius: 8px;">
                 <div class="row">
                     <div class="col">
@@ -84,7 +86,7 @@
                     </div>
                 </div>
                 <hr>
-
+    
                 <div class="row gap-1 justify-content-center text-center" id="initial-matrix">
                     <div class="d-flex">
                         <div class="p-1 small-box">
@@ -167,15 +169,15 @@
                             Max
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Max-C1">
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Max-C1">
                             a
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Max-C2">
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Max-C2">
                             a
                         </div>
                     </div>
@@ -183,30 +185,30 @@
                         <div class="col-2 borderborder-black rounded-1 super-small-box" style="background-color: #C5FFF8; border:solid black; border-width: 1px;">
                             Min
                         </div>
-                    
+                        
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Min-C1">
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Min-C1">
                             a
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Min-C2">
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Min-C2">
                             a
                         </div>
                     </div>
                     <hr>
                     <div class="row gap-2">
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A1-C1">
                             a
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A1-C2">
                             a
@@ -214,13 +216,13 @@
                     </div>
                     <div class="row gap-2">
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A2-C1">
                             a
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A2-C2">
                             a
@@ -237,185 +239,186 @@
                         activates the relevant trigger.
                     </div>
                 </div>
-      
+          
                 <br>
                 <div class="fw-bolder">2. Menghitung Nilai Marginal Utilitas</div>
-                <br>
+                    <br>
                 <div class="row gap-2 justify-content-center text-center">
                     <div class="row gap-2">
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A1-C1">
                             a
                         </div>
                         <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="A1-C2">
                             a
                         </div>
-                    </div>
-                    <div class="row gap-2">
-                        <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip"
-                            data-bs-title="A2-C1">
-                            a
                         </div>
-                        <div class="col-1 border border-black rounded-1 super-small-box"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip"
-                            data-bs-title="A2-C2">
-                            a
+                        <div class="row gap-2">
+                            <div class="col-1 border border-black rounded-1 super-small-box"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A2-C1">
+                                a
+                            </div>
+                            <div class="col-1 border border-black rounded-1 super-small-box"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A2-C2">
+                                a
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <p class="d-inline-flex gap-1" id="detail-button-2">
-                    <button type="button" class="btn andes-button" onclick="open_detail_calculation(2)">Detail Kalkulasi</button>
-                </p>
-                <div>
-                    <div class="card card-body detail" id="detail-2">
-                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
-                        activates the relevant trigger.
+                    <br>
+                    <p class="d-inline-flex gap-1" id="detail-button-2">
+                        <button type="button" class="btn andes-button" onclick="open_detail_calculation(2)">Detail Kalkulasi</button>
+                    </p>
+                    <div>
+                        <div class="card card-body detail" id="detail-2">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
+                            activates the relevant trigger.
+                        </div>
                     </div>
-                </div>
-                <br>
-
-                <div class="fw-bolder">3. Mendapatkan Nilai Utilitas Akhir dan Perangkingan</div>
-                <br>
-                <div class="col-6 border border-black rounded-2">
-                    <style>
-                        .table-striped thead {
-                            background-color: #5FBDFF;
-                        }
-                        .table-striped tbody tr:nth-child(odd) {
-                            background-color: rgba(95, 189, 255, 0.25);
-                        }
-                        .table-striped tbody tr:nth-child(even) {
-                            background-color: rgba(95, 189, 255, 0.5);
-                        }
-                    </style>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr style="font-weight: bold;">
-                                <td>Alternatif</td>
-                                <td>Utilitas</td>
-                                <td>Peringkat</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>d</td>
-                                <td>d</td>
-                                <td>d</td>
-                            </tr>
-                            <tr>
-                                <td>d</td>
-                                <td>d</td>
-                                <td>d</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
-                <br>
-                <p class="d-inline-flex gap-1" id="detail-button-3">
-                    <button type="button" class="btn andes-button" onclick="open_detail_calculation(3)">Detail Kalkulasi</button>
-                </p>
-                <div>
-                    <div class="card card-body detail" id="detail-3">
-                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
-                        activates the relevant trigger.
+                    <br>
+    
+                    <div class="fw-bolder">3. Mendapatkan Nilai Utilitas Akhir dan Perangkingan</div>
+                    <br>
+                    <div class="col-6 border border-black rounded-2">
+                        <style>
+                            .table-striped thead {
+                                background-color: #5FBDFF;
+                            }
+                            .table-striped tbody tr:nth-child(odd) {
+                                background-color: rgba(95, 189, 255, 0.25);
+                            }
+                            .table-striped tbody tr:nth-child(even) {
+                                background-color: rgba(95, 189, 255, 0.5);
+                            }
+                        </style>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="font-weight: bold;">
+                                    <td>Alternatif</td>
+                                    <td>Utilitas</td>
+                                    <td>Peringkat</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>d</td>
+                                    <td>d</td>
+                                    <td>d</td>
+                                </tr>
+                                <tr>
+                                    <td>d</td>
+                                    <td>d</td>
+                                    <td>d</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
                     </div>
+                    <br>
+                    <p class="d-inline-flex gap-1" id="detail-button-3">
+                        <button type="button" class="btn andes-button" onclick="open_detail_calculation(3)">Detail Kalkulasi</button>
+                    </p>
+                    <div>
+                        <div class="card card-body detail" id="detail-3">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
+                            activates the relevant trigger.
+                        </div>
+                    </div>
+    
                 </div>
-
             </div>
-        </div>
-        <div class="about text-light">
-            <div class="about-dark bg-dark bg-opacity-50">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col justify-content-center mt-5">
-                            <img src="/static/img/about.png" class="img-thumbnail" alt="">
-                        </div>
-                        <div class="col justify-content-center p-5">
-                            <h2 class="judul-about">
-                                ABOUT
-                            </h2>
-                            <br><br>
-                            <div class="fs-4">
-                                <p>
-                                    Multi-Attribute Utility Theory, adalah suatu pendekatan dalam ilmu pengambilan
-                                    keputusan yang dirancang untuk membantu individu atau organisasi dalam menyelesaikan
-                                    masalah pengambilan keputusan yang melibatkan banyak atribut atau kriteria.
-                                    Pendekatan ini mencoba untuk menggabungkan preferensi dan nilai yang beragam terkait
-                                    dengan opsi yang sedang dipertimbangkan.
-                                </p>
+            <div id="scrollspyHeading3" class="about text-light">
+                <div class="about-dark bg-dark bg-opacity-50">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col justify-content-center my-4">
+                                <img src="/static/img/about.png" class="img-thumbnail mt-5" alt="">
+                            </div>
+                            <div class="col justify-content-center p-5">
+                                <h2 class="judul-about">
+                                    ABOUT
+                                </h2>
+                                <br><br>
+                                <div class="fs-4">
+                                    <p>
+                                        Multi-Attribute Utility Theory, adalah suatu pendekatan dalam ilmu pengambilan
+                                        keputusan yang dirancang untuk membantu individu atau organisasi dalam menyelesaikan
+                                        masalah pengambilan keputusan yang melibatkan banyak atribut atau kriteria.
+                                        Pendekatan ini mencoba untuk menggabungkan preferensi dan nilai yang beragam terkait
+                                        dengan opsi yang sedang dipertimbangkan.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="contact text-light">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col pt-4">
-                            <div class="grid justify-content-center">
-                                <div class="col">
-                                        <div class="row justify-content-center">
-                                            <div class="col-2">
-                                                <img src="/static/img/logo.png" alt="" class="logo-about">
+                <div class="contact text-light">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col pt-4">
+                                <div class="grid justify-content-center">
+                                    <div class="col">
+                                            <div class="row justify-content-center">
+                                                <div class="col-2 mb-2">
+                                                    <img src="/static/img/logo.png" alt="" class="logo-about">
+                                                </div>
+                                                <br>
+                                                <div class="col-3 mt-2">
+                                                    <h5 class="judul-logo">ANDES ENTERPRICE</h5>
+                                                </div>
                                             </div>
-                                            <br>
-                                            <div class="col-3">
-                                                <h2 class="judul-logo">ANDES ENTERPRICE</h2>
-                                            </div>
+                                    </div>
+                                    <div class="col px-5 mx-5">
+                                        <h6 class="text-wrap text-center">Andes helps you make decisions that you won't regret in the future. Together for the better. Build the Future.</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col p-2 mt-3">
+                                <h5 class="judul-contact">Contact</h5>
+                                <div class="d-grid justify-content-center">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                                            </svg>
                                         </div>
-                                </div>
-                                <div class="col">
-                                    <h5>Andes helps you make decisions that you won't regret in the future. Together for the better. Build the Future.</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col p-2">
-                            <h2 class="judul-contact">Contact</h2>
-                            <div class="d-grid justify-content-center">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope-fill"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
-                                        </svg>
+                                        <div class="col-6">
+                                            <h6><a href="" style="text-decoration: underline; color: white ">antdecision@gmail.com</a></h6>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <h4><a href="" style="text-decoration: underline; color: white ">antdecision@gmail.com</a></h4>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                                            </svg>
+                                        </div>
+                                        <div class="col-6">
+                                            <h6>@antdecision</h6>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
-                                        </svg>
-                                    </div>
-                                    <div class="col-6">
-                                        <h4>@antdecision</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-youtube"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408z" />
-                                        </svg>
-                                    </div>
-                                    <div class="col-6">
-                                        <h4>Ant Decision</h4>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-youtube"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408z" />
+                                            </svg>
+                                        </div>
+                                        <div class="col-6">
+                                            <h6>Ant Decision</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -423,8 +426,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
