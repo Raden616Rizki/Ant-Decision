@@ -149,44 +149,45 @@ function change2matrix() {
 
     $.ajax({
         type: 'POST',
-        url: '/post_csv_electre',
+        url: '/post_file_maut',
         data: form_data,
         contentType: false,
         processData: false,
         success: function (response) {
             // console.log(response)
             data = response.result
-            row = data.length
-            column = data[0].length
+            console.log(data)
+            // row = data.length
+            // column = data[0].length
 
-            $('#row').val(row)
-            $('#column').val(column)
+            // $('#row').val(row)
+            // $('#column').val(column)
 
-            $('#initial-matrix').empty();
-            $('#weight-matrix').empty();
+            // $('#initial-matrix').empty();
+            // $('#weight-matrix').empty();
 
-            for (let i = 0; i < row; i++) {
-                let temp_html = `<tr>`
-                for (let j = 0; j < column; j++) {
-                    temp_html += `
-                    <td>
-                        <input type="number" id="x${ i }${ j }" min=0.01 value=${data[i][j]}>
-                    </td>
-                    `
-                }
-                temp_html += `</tr>`
-                $('#initial-matrix').append(temp_html);
-            }
+            // for (let i = 0; i < row; i++) {
+            //     let temp_html = `<tr>`
+            //     for (let j = 0; j < column; j++) {
+            //         temp_html += `
+            //         <td>
+            //             <input type="number" id="x${ i }${ j }" min=0.01 value=${data[i][j]}>
+            //         </td>
+            //         `
+            //     }
+            //     temp_html += `</tr>`
+            //     $('#initial-matrix').append(temp_html);
+            // }
         
-            for (let j = 0; j < column; j++) {
-                let temp_html = `
-                <td>
-                    <input type="number" id="w${ j }" min=0.01>
-                </td>
-                `
+            // for (let j = 0; j < column; j++) {
+            //     let temp_html = `
+            //     <td>
+            //         <input type="number" id="w${ j }" min=0.01>
+            //     </td>
+            //     `
         
-                $('#weight-matrix').append(temp_html)
-            }
+            //     $('#weight-matrix').append(temp_html)
+            // }
         },
         error: function (xhr, status, error) {
             // console.log(error)
