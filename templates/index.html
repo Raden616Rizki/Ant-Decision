@@ -81,7 +81,7 @@
                     <div class="col">
                         <div class="fw-bolder">Pilih file csv / xlsx</div>
                         <div class="mt-2">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".csv,.xlsx">
+                            <input class="form-control form-control-sm" id="file" type="file" accept=".csv,.xlsx" onchange="change2matrix()">
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" class="btn andes-button">Kalkulasi</button>
+                <button type="button" class="btn andes-button" onclick="calculate()">Kalkulasi</button>
             </div>
             <div class="calculate-box mt-5 p-4 shadow-sm" style="border-radius: 8px;">
                 <div class="fw-bolder">Hasil Kalkulasi</div>

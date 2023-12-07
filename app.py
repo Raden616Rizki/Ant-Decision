@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from static.python import maut
+import json
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ def index():
 @app.route('/post_maut', methods=['POST'])
 def post_maut():
     matriks = request.form.get('matriks')
-    jensi = request.form.get('jensi')
+    jenis = request.form.get('jenis')
     bobot = request.form.get('bobot')
     
     matriks = json.loads(matriks)

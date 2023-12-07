@@ -22,6 +22,9 @@ def initiation(matriks, jenis, bobot):
     utilitas_akhir = hitung_utilitas(matriks, bobot)
     list_rank = perangkingan_utilitas(utilitas_akhir)
     
+    matriks_ternormalisasi = matriks_ternormalisasi.tolist()
+    matriks_marginal = matriks_marginal.tolist()
+    
     result = {
         'matriks_ternormalisasi': matriks_ternormalisasi,
         'max_kolom': max_kolom,
@@ -47,8 +50,8 @@ def normalisasi_matriks(matriks, jenis):
 
   # Memperoleh nilai max dan min tiap kriteria
   for j in range(kolom):
-    max_value = np.max(data[:, j])
-    min_value = np.min(data[:, j])
+    max_value = float(np.max(matriks[:, j]))
+    min_value = float(np.min(matriks[:, j]))
 
     max_column.append(max_value)
     min_column.append(min_value)
@@ -65,7 +68,7 @@ def normalisasi_matriks(matriks, jenis):
       else:
         return print('Jenis Tidak Dikenali')
 
-      matriks_ternormalisasi[i][j] = value
+      matriks_ternormalisasi[i][j] = round(float(value), 4)
 
   return matriks_ternormalisasi, max_column, min_column
 
@@ -81,10 +84,10 @@ def hitung_marginal(matriks):
   for i in range(baris):
     for j in range(kolom):
       euler_calc = math.e ** matriks[i][j] ** 2
-      euler_calc_list.append(euler_calc)
+      euler_calc_list.append(round((euler_calc), 4))
 
       value = (euler_calc - 1) / 1.71
-      matriks_marginal[i][j] = value
+      matriks_marginal[i][j] = round(float(value), 4)
 
   return matriks_marginal, euler_calc_list
 
@@ -100,7 +103,8 @@ def hitung_utilitas(matriks, bobot):
     utilitas_akhir.append(0)
     for j in range(kolom):
       value = matriks[i][j] * bobot[j]
-      utilitas_akhir[i] += value
+      
+      utilitas_akhir[i] += round(float(value), 4)
 
   return utilitas_akhir
 
