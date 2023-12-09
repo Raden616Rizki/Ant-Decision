@@ -138,6 +138,10 @@ function calculate() {
     })
 }
 
+function update_calculation() {
+    
+}
+
 function change2matrix() {
     var file = $('#file')[0].files[0]
 

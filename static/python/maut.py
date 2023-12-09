@@ -18,8 +18,8 @@ def initiation(matriks, jenis, bobot):
         bobot = bobot
         
     matriks_ternormalisasi, max_kolom, min_kolom = normalisasi_matriks(matriks, jenis)
-    matriks_marginal, euler_calc_list = hitung_marginal(matriks)
-    utilitas_akhir = hitung_utilitas(matriks, bobot)
+    matriks_marginal, euler_calc_list = hitung_marginal(matriks_ternormalisasi)
+    utilitas_akhir = hitung_utilitas(matriks_marginal, bobot)
     list_rank = perangkingan_utilitas(utilitas_akhir)
     
     matriks_ternormalisasi = matriks_ternormalisasi.tolist()
@@ -103,7 +103,7 @@ def hitung_utilitas(matriks, bobot):
     utilitas_akhir.append(0)
     for j in range(kolom):
       value = matriks[i][j] * bobot[j]
-      
+
       utilitas_akhir[i] += float(value)
 
   return utilitas_akhir
