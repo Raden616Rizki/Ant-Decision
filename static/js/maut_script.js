@@ -195,7 +195,7 @@ function update_result(data) {
             <div class="col-1 border border-black rounded-1 super-small-box"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A1-C1" id="n${i}${j}">
+                data-bs-title="A${i}-C${j}" id="n${i}${j}">
                 ${norm[i][j].toFixed(3)}
             </div>
             `
@@ -206,7 +206,27 @@ function update_result(data) {
     $('#matriks-ternormalisasi').append(norm_html)
 
     // Update Matriks Marginal Utilitas
-    
+    marginal = data.matriks_marginal
+    $('#matriks-marginal').empty()
+
+    let marginal_html =``
+
+    for (let i = 0; i < marginal.length; i++) {
+        marginal_html +=`<div class="row gap-2">`
+        for (let j = 0; j < marginal[0].length; j++) {
+            marginal_html += `
+            <div class="col-1 border border-black rounded-1 super-small-box"
+                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="A${i}-C${j}" id="m${i}${j}">
+                ${marginal[i][j].toFixed(3)}
+            </div>
+            `
+        }
+        marginal_html += `</div>`
+    }
+
+    $('#matriks-marginal').append(marginal_html)
 }
 
 function change2matrix() {
