@@ -159,7 +159,7 @@ function update_result(data) {
     </div>
     `
 
-    for(var i = 0; i < max_data.length; i++) {
+    for (var i = 0; i < max_data.length; i++) {
         max_html += `
         <div class="col-1 border border-black rounded-1 super-small-box"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -183,6 +183,30 @@ function update_result(data) {
     $('#min-column').append(min_html)
 
     // Update Matriks Ternormalisasi
+    norm = data.matriks_ternormalisasi
+    $('#matriks-ternormalisasi').empty()
+
+    let norm_html =``
+
+    for (let i = 0; i < norm.length; i++) {
+        norm_html += `<div class="row gap-2">`
+        for (let j = 0; j < norm[0].length; j++) {
+            norm_html += `
+            <div class="col-1 border border-black rounded-1 super-small-box"
+                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="A1-C1" id="n${i}${j}">
+                ${norm[i][j].toFixed(3)}
+            </div>
+            `
+        }
+        norm_html += `</div>`
+    }
+
+    $('#matriks-ternormalisasi').append(norm_html)
+
+    // Update Matriks Marginal Utilitas
+    
 }
 
 function change2matrix() {
