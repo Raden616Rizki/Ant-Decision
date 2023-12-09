@@ -227,6 +227,24 @@ function update_result(data) {
     }
 
     $('#matriks-marginal').append(marginal_html)
+
+    // Update Nilai Utilitas Akhir
+    utility = data.utilitas_akhir
+    rank = data.list_rank
+    $('#utility-column').empty()
+
+    let temp_html = ``
+
+    for (var i = 0; i < utility.length; i++) {
+        temp_html += `
+        <tr>
+            <td>A${i+1}</td>
+            <td>${utility[i].toFixed(3)}</td>
+            <td>${rank[i]}</td>
+        </tr>
+        `
+    }
+    $('#utility-column').append(temp_html)
 }
 
 function change2matrix() {
