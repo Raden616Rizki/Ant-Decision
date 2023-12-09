@@ -129,7 +129,7 @@ function calculate() {
             // console.log(response)
             result = response.result
             console.log(result)
-            // change_result(result)
+            update_result(result)
         },
         error: function (xhr, status, error) {
             // console.log(error)
@@ -138,8 +138,51 @@ function calculate() {
     })
 }
 
-function update_calculation() {
-    
+function update_result(data) {
+
+    // Update Max and Column
+    max_data = data.max_kolom
+    $('#max-column').empty()
+
+    min_data = data.min_kolom
+    $('#min-column').empty()
+
+    let max_html = `
+    <div class="col-2 borderborder-black rounded-1 super-small-box" style="background-color: #C5FFF8; border:solid black; border-width: 1px;">
+        Max
+    </div>
+    `
+
+    let min_html = `
+    <div class="col-2 borderborder-black rounded-1 super-small-box" style="background-color: #C5FFF8; border:solid black; border-width: 1px;">
+        Min
+    </div>
+    `
+
+    for(var i = 0; i < max_data.length; i++) {
+        max_html += `
+        <div class="col-1 border border-black rounded-1 super-small-box"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Max-C${i}">
+            ${max_data[i]}
+        </div>
+        `
+
+        min_html += `
+        <div class="col-1 border border-black rounded-1 super-small-box"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Min-C${i}">
+            ${min_data[i]}
+        </div>
+        `
+    }
+
+    $('#max-column').append(max_html)
+    $('#min-column').append(min_html)
+
+    // Update Matriks Ternormalisasi
 }
 
 function change2matrix() {
@@ -157,39 +200,81 @@ function change2matrix() {
         success: function (response) {
             data = response.result
 
-            matriks = data.matriks
-            jenis = data.jenis
-            bobot = data.bobot
+            update_input_form(data)
+        },
+        error: function (xhr, status, error) {
+            // console.log(error)
+            alert('Invalid CSV File!!!')
+        }
+    })
+}
 
-            baris = matriks.length
-            kolom = matriks[0].length
+function update_input_form(data) {
+    matriks = data.matriks
+    jenis = data.jenis
+    bobot = data.bobot
 
-            $('#baris').val(baris)
-            $('#kolom').val(kolom)
+    baris = matriks.length
+    kolom = matriks[0].length
 
-            $('#initial-matrix').empty();
-            $('#initial-type').empty();
-            $('#initial-weight').empty();
+    $('#baris').val(baris)
+    $('#kolom').val(kolom)
 
-            for (let i = 0; i < baris; i++) {
-                let temp_html = `<div class="d-flex">`
-                for (let j = 0; j < kolom; j++) {
-                    temp_html += `
-                    <div class="p-1 small-box">
-                        <input id="x${ i }${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip"
-                        data-bs-title="A${i+1}-C${j+1}">
-                    </div>
-                    `
-                }
-                temp_html += `</div>`
-                $('#initial-matrix').append(temp_html);        
-            }
-        
-            for (let j = 0; j < kolom; j++) {
+    $('#initial-matrix').empty();
+    $('#initial-type').empty();
+    $('#initial-weight').empty();
 
-                let temp_html_type = `
+    for (let i = 0; i < baris; i++) {
+        let temp_html = `<div class="d-flex">`
+        for (let j = 0; j < kolom; j++) {
+            temp_html += `
+            <div class="p-1 small-box">
+                <input id="x${ i }${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
+                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="A${i+1}-C${j+1}">
+            </div>
+            `
+        }
+        temp_html += `</div>`
+        $('#initial-matrix').append(temp_html);        
+    }
+
+    for (let j = 0; j < kolom; j++) {
+
+        let temp_html_type = `
+        <div class="p-1">
+            <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="C${j+1}">
+                <option selected value="benefit">Benefit</option>
+                <option value="cost">Cost</option>
+            </select>
+        </div>
+        `
+
+        value_bobot = 1
+        value_jenis = 1
+
+        if (Object.keys(data).length == 3) {
+            value_jenis = jenis[0][j].toLowerCase().trim()
+            value_bobot = bobot[0][j]
+
+            if (value_jenis == 'cost') {
+                temp_html_type = `
+                <div class="p-1">
+                    <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="C${j+1}">
+                        <option value="benefit">Benefit</option>
+                        <option selected value="cost">Cost</option>
+                    </select>
+                </div>
+                `
+            } else {
+                temp_html_type = `
                 <div class="p-1">
                     <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -200,57 +285,19 @@ function change2matrix() {
                     </select>
                 </div>
                 `
-
-                value_bobot = 1
-                value_jenis = 1
-
-                if (Object.keys(data).length == 3) {
-                    value_jenis = jenis[0][j].toLowerCase().trim()
-                    value_bobot = bobot[0][j]
-
-                    if (value_jenis == 'cost') {
-                        temp_html_type = `
-                        <div class="p-1">
-                            <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
-                            data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip"
-                            data-bs-title="C${j+1}">
-                                <option value="benefit">Benefit</option>
-                                <option selected value="cost">Cost</option>
-                            </select>
-                        </div>
-                        `
-                    } else {
-                        temp_html_type = `
-                        <div class="p-1">
-                            <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
-                            data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip"
-                            data-bs-title="C${j+1}">
-                                <option selected value="benefit">Benefit</option>
-                                <option value="cost">Cost</option>
-                            </select>
-                        </div>
-                        `
-                    }
-                }
-                let temp_html_weight = `
-                <div class="p-1 small-box">
-                    <input id="w${j}" class="form-control form-control-sm border-black" type="number" min="1" value=${value_bobot} placeholder="" aria-label="value"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-custom-class="custom-tooltip"
-                    data-bs-title="C${j+1}">
-                </div>
-                `
-        
-                $('#initial-type').append(temp_html_type)
-                $('#initial-weight').append(temp_html_weight)
             }
-            $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
-        },
-        error: function (xhr, status, error) {
-            // console.log(error)
-            alert('Invalid CSV File!!!')
         }
-    })
+        let temp_html_weight = `
+        <div class="p-1 small-box">
+            <input id="w${j}" class="form-control form-control-sm border-black" type="number" min="1" value=${value_bobot} placeholder="" aria-label="value"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="C${j+1}">
+        </div>
+        `
+
+        $('#initial-type').append(temp_html_type)
+        $('#initial-weight').append(temp_html_weight)
+    }
+    $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
 }
