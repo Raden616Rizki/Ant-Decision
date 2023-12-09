@@ -68,7 +68,7 @@ def normalisasi_matriks(matriks, jenis):
       else:
         return print('Jenis Tidak Dikenali')
 
-      matriks_ternormalisasi[i][j] = round(float(value), 4)
+      matriks_ternormalisasi[i][j] = float(value)
 
   return matriks_ternormalisasi, max_column, min_column
 
@@ -84,10 +84,10 @@ def hitung_marginal(matriks):
   for i in range(baris):
     for j in range(kolom):
       euler_calc = math.e ** matriks[i][j] ** 2
-      euler_calc_list.append(round((euler_calc), 4))
+      euler_calc_list.append((euler_calc))
 
       value = (euler_calc - 1) / 1.71
-      matriks_marginal[i][j] = round(float(value), 4)
+      matriks_marginal[i][j] = float(value)
 
   return matriks_marginal, euler_calc_list
 
@@ -104,7 +104,7 @@ def hitung_utilitas(matriks, bobot):
     for j in range(kolom):
       value = matriks[i][j] * bobot[j]
       
-      utilitas_akhir[i] += round(float(value), 4)
+      utilitas_akhir[i] += float(value)
 
   return utilitas_akhir
 

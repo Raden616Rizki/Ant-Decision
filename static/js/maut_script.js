@@ -39,8 +39,6 @@ function change_matrix_shape() {
         }
         temp_html += `</div>`
         $('#initial-matrix').append(temp_html);
-
-        $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
     }
 
     for (let j = 0; j < kolom; j++) {
@@ -67,6 +65,7 @@ function change_matrix_shape() {
         $('#initial-type').append(temp_html_type)
         $('#initial-weight').append(temp_html_weight)
     }
+    $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
 }
 
 function open_detail_calculation(id) {
@@ -142,8 +141,6 @@ function calculate() {
 function change2matrix() {
     var file = $('#file')[0].files[0]
 
-    console.log(file)
-
     let form_data = new FormData()
     form_data.append('file', file)
 
@@ -154,40 +151,98 @@ function change2matrix() {
         contentType: false,
         processData: false,
         success: function (response) {
-            // console.log(response)
             data = response.result
-            console.log(data)
-            // row = data.length
-            // column = data[0].length
 
-            // $('#row').val(row)
-            // $('#column').val(column)
+            matriks = data.matriks
+            jenis = data.jenis
+            bobot = data.bobot
 
-            // $('#initial-matrix').empty();
-            // $('#weight-matrix').empty();
+            baris = matriks.length
+            kolom = matriks[0].length
 
-            // for (let i = 0; i < row; i++) {
-            //     let temp_html = `<tr>`
-            //     for (let j = 0; j < column; j++) {
-            //         temp_html += `
-            //         <td>
-            //             <input type="number" id="x${ i }${ j }" min=0.01 value=${data[i][j]}>
-            //         </td>
-            //         `
-            //     }
-            //     temp_html += `</tr>`
-            //     $('#initial-matrix').append(temp_html);
-            // }
+            $('#baris').val(baris)
+            $('#kolom').val(kolom)
+
+            $('#initial-matrix').empty();
+            $('#initial-type').empty();
+            $('#initial-weight').empty();
+
+            for (let i = 0; i < baris; i++) {
+                let temp_html = `<div class="d-flex">`
+                for (let j = 0; j < kolom; j++) {
+                    temp_html += `
+                    <div class="p-1 small-box">
+                        <input id="x${ i }${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-custom-class="custom-tooltip"
+                        data-bs-title="A${i+1}-C${j+1}">
+                    </div>
+                    `
+                }
+                temp_html += `</div>`
+                $('#initial-matrix').append(temp_html);        
+            }
         
-            // for (let j = 0; j < column; j++) {
-            //     let temp_html = `
-            //     <td>
-            //         <input type="number" id="w${ j }" min=0.01>
-            //     </td>
-            //     `
+            for (let j = 0; j < kolom; j++) {
+
+                let temp_html_type = `
+                <div class="p-1">
+                    <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="C${j+1}">
+                        <option selected value="benefit">Benefit</option>
+                        <option value="cost">Cost</option>
+                    </select>
+                </div>
+                `
+
+                value_bobot = 1
+                value_jenis = 1
+
+                if (Object.keys(data).length == 3) {
+                    value_jenis = jenis[0][j].toLowerCase().trim()
+                    value_bobot = bobot[0][j]
+
+                    if (value_jenis == 'cost') {
+                        temp_html_type = `
+                        <div class="p-1">
+                            <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="C${j+1}">
+                                <option value="benefit">Benefit</option>
+                                <option selected value="cost">Cost</option>
+                            </select>
+                        </div>
+                        `
+                    } else {
+                        temp_html_type = `
+                        <div class="p-1">
+                            <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="C${j+1}">
+                                <option selected value="benefit">Benefit</option>
+                                <option value="cost">Cost</option>
+                            </select>
+                        </div>
+                        `
+                    }
+                }
+                let temp_html_weight = `
+                <div class="p-1 small-box">
+                    <input id="w${j}" class="form-control form-control-sm border-black" type="number" min="1" value=${value_bobot} placeholder="" aria-label="value"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="C${j+1}">
+                </div>
+                `
         
-            //     $('#weight-matrix').append(temp_html)
-            // }
+                $('#initial-type').append(temp_html_type)
+                $('#initial-weight').append(temp_html_weight)
+            }
+            $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
         },
         error: function (xhr, status, error) {
             // console.log(error)
