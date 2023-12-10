@@ -130,7 +130,7 @@ function calculate() {
         processData: false,
         success: function (response) {
             // console.log(response)
-            result = response.result
+            let result = response.result
             console.log(result)
             update_result(result)
         },
@@ -144,10 +144,10 @@ function calculate() {
 function update_result(data) {
 
     // Update Max and Column
-    max_data = data.max_kolom
+    let max_data = data.max_kolom
     $('#max-column').empty()
 
-    min_data = data.min_kolom
+    let min_data = data.min_kolom
     $('#min-column').empty()
 
     let max_html = `
@@ -189,7 +189,7 @@ function update_result(data) {
     $('#min-column [data-bs-toggle="tooltip"]').tooltip();
 
     // Update Matriks Ternormalisasi
-    norm = data.matriks_ternormalisasi
+    let norm = data.matriks_ternormalisasi
     $('#matriks-ternormalisasi').empty()
 
     let norm_html = ``
@@ -224,11 +224,11 @@ function update_result(data) {
         for (let j = 0; j < norm[0].length; j++) {
             if (jenis[j].toLowerCase().trim() == 'benefit') {
                 detail_norm_html += `
-                $$R_{${i+1}${j+1}} = \\frac{${matriks[i][j]}-${min_data[j]}}{${max_data[j]}-${min_data[j]}} = \\frac{${matriks[i][j] - min_data[j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
+                $$R_{${i+1}:${j+1}} = \\frac{${matriks[i][j]}-${min_data[j]}}{${max_data[j]}-${min_data[j]}} = \\frac{${matriks[i][j] - min_data[j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
                 `
             } else {
                 detail_norm_html += `
-                $$R_{${i+1}${j+1}} = 1 + \\left(\\frac{${min_data[j]}-${matriks[i][j]}}{${max_data[j]}-${min_data[j]}}\\right) = 1 + \\frac{${min_data[j] - matriks[i][j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
+                $$R_{${i+1}:${j+1}} = 1 + \\left(\\frac{${min_data[j]}-${matriks[i][j]}}{${max_data[j]}-${min_data[j]}}\\right) = 1 + \\frac{${min_data[j] - matriks[i][j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
                 `
             }
         }
@@ -238,7 +238,7 @@ function update_result(data) {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
     // Update Matriks Marginal Utilitas
-    marginal = data.matriks_marginal
+    let marginal = data.matriks_marginal
     $('#matriks-marginal').empty()
 
     let marginal_html = ``
@@ -260,6 +260,25 @@ function update_result(data) {
 
     $('#matriks-marginal').append(marginal_html)
     $('#matriks-marginal [data-bs-toggle="tooltip"]').tooltip();
+
+    // Update Detail Kalkulasi Matriks Marginal
+    let exp = data.euler_calc_list
+    $('#detail-2').empty();
+
+    let detail_marginal_html = ``
+    let count = 0
+
+    for (let i = 0; i < marginal.length; i++) {
+        for (let j = 0; j < marginal[0].length; j++) {
+            detail_marginal_html += `
+            $$U_{${i+1}:${j+1}} = \\frac{2,71828182845904523^{(${norm[i][j]})^2} - 1}{1,71} = \\frac{${exp[count]} - 1}{1,71} = ${marginal[i][j]}$$
+            `
+            count += 1
+        }
+    }
+
+    $('#detail-2').append(detail_marginal_html)
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
     // Update Nilai Utilitas Akhir
     utility = data.utilitas_akhir
