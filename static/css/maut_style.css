@@ -2,6 +2,13 @@
     color: white;
     background-color: #7B66FF;
     opacity: 0.75;
+    display: none;
+}
+
+.calc-button {
+    color: white;
+    background-color: #7B66FF;
+    opacity: 0.75;
 }
 
 .andes-button:hover {
@@ -25,6 +32,9 @@
 
 .detail {
     display: none;
+    background-color: #D7EFFF;
+    height: 128px;
+    overflow: auto;
 }
 
 .calculate{
@@ -91,6 +101,10 @@ body{
 
 .judul-logo{
     font-family: 'Aclonica', sans-serif;
+}
+
+#result-box {
+    display: none;
 }
 
 .small-box {

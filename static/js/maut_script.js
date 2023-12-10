@@ -192,7 +192,7 @@ function update_result(data) {
     norm = data.matriks_ternormalisasi
     $('#matriks-ternormalisasi').empty()
 
-    let norm_html =``
+    let norm_html = ``
 
     for (let i = 0; i < norm.length; i++) {
         norm_html += `<div class="row gap-2">`
@@ -212,14 +212,108 @@ function update_result(data) {
     $('#matriks-ternormalisasi').append(norm_html)
     $('#matriks-ternormalisasi [data-bs-toggle="tooltip"]').tooltip();
 
+    // Update Detail Kalkulasi Normalisasi
+    matriks = data.matriks
+    jenis = data.jenis
+    bobot = data.bobot
+    $('#detail-1').empty();
+
+    let detail_norm_html = ``
+
+    for (let i = 0; i < norm.length; i++) {
+        for (let j = 0; j < norm[0].length; j++) {
+            if (jenis[j].toLowerCase().trim() == 'benefit') {
+                detail_norm_html += `
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" direction="ltr" width="9.9878em"
+                    height="1.97em" viewBox="0 -1.256 9.9878 1.97"
+                    style="vertical-align: -0.714em; overflow: visible; user-select: none;"><text
+                        fill="currentColor" style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(0,0)">𝑅</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 0.8px"
+                        transform="translate(0.74,0)">${i+1}${j+1}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(2.0178,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(3.1006,-0.58)">${matriks[i][j]} − ${min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(3.1006,0.7)">${max_data[j]} − ${min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(5.6278,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(6.7106,-0.58)">${matriks[j] - min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(6.7106,0.7)">${max_data[j] - min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(7.6083,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(8.5711,0)">${norm[i][j]}</text>
+                    <line x1="3.1006" y1="-0.25" x2="5.23" y2="-0.25" stroke-width="0.066"
+                        stroke="currentColor"></line>
+                    <line x1="6.7106" y1="-0.25" x2="7.2106" y2="-0.25" stroke-width="0.066"
+                        stroke="currentColor"></line>
+                </svg>
+                <br>
+                <br>
+                `
+            } else {
+                detail_norm_html += `
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" direction="ltr" width="13.9127em"
+                    height="1.97em" viewBox="0 -1.256 13.9127 1.97"
+                    style="vertical-align: -0.714em; overflow: visible; user-select: none;"><text
+                        fill="currentColor" style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(0,0)">𝑅</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 0.8px"
+                        transform="translate(0.74,0)">${i+1}${j+1}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(2.0178,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(2.9806,0)">1</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(3.7028,0)">+</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 2px"
+                        transform="translate(4.34,0.2)">(</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(5.063,-0.58)">${min_data[j]} − ${matriks[i][j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(5.063,0.7)">${max_data[j]} − ${min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 2px"
+                        transform="translate(7.2,0.2)">)</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(7.9232,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(8.886,0)">1</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(9.6082,0)">+</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(10.6354,-0.58)">${min_data[j] - matriks[i][j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(10.6354,0.7)">${max_data[j] - min_data[j]}</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(11.5332,0)">=</text><text fill="currentColor"
+                        style="font-family: XITSMath-Regular; font-size: 1px"
+                        transform="translate(12.496,0)">${norm[i][j]}</text>
+                    <line x1="5.063" y1="-0.25" x2="7.1924" y2="-0.25" stroke-width="0.066"
+                        stroke="currentColor"></line>
+                    <line x1="10.6354" y1="-0.25" x2="11.1354" y2="-0.25" stroke-width="0.066"
+                        stroke="currentColor"></line>
+                </svg>
+                <br>
+                <br>
+                `
+            }
+        }
+    }
+
+    $('#detail-1').append(detail_norm_html)
+
     // Update Matriks Marginal Utilitas
     marginal = data.matriks_marginal
     $('#matriks-marginal').empty()
 
-    let marginal_html =``
+    let marginal_html = ``
 
     for (let i = 0; i < marginal.length; i++) {
-        marginal_html +=`<div class="row gap-2">`
+        marginal_html += `<div class="row gap-2">`
         for (let j = 0; j < marginal[0].length; j++) {
             marginal_html += `
             <div class="col-1 border border-black rounded-1 super-small-box"
@@ -254,6 +348,8 @@ function update_result(data) {
     }
     $('#utility-column').append(temp_html)
     $('#utility-column [data-bs-toggle="tooltip"]').tooltip();
+
+    $('#result-box').show()
 }
 
 function change2matrix() {
@@ -308,7 +404,7 @@ function update_input_form(data) {
             `
         }
         temp_html += `</div>`
-        $('#initial-matrix').append(temp_html);        
+        $('#initial-matrix').append(temp_html);
     }
 
     for (let j = 0; j < kolom; j++) {

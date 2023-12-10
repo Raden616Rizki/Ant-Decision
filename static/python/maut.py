@@ -22,10 +22,16 @@ def initiation(matriks, jenis, bobot):
     utilitas_akhir = hitung_utilitas(matriks_marginal, bobot)
     list_rank = perangkingan_utilitas(utilitas_akhir)
     
+    matriks = matriks.tolist()
+    jenis = jenis.tolist()
+    bobot = bobot.tolist()
     matriks_ternormalisasi = matriks_ternormalisasi.tolist()
     matriks_marginal = matriks_marginal.tolist()
     
     result = {
+        'matriks': matriks,
+        'jenis': jenis,
+        'bobot': bobot,
         'matriks_ternormalisasi': matriks_ternormalisasi,
         'max_kolom': max_kolom,
         'min_kolom': min_kolom,

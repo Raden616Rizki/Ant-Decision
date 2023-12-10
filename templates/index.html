@@ -96,24 +96,28 @@
                         <div class="p-1 small-box">
                             <input id="x0_0" class="form-control form-control-sm border-black" type="number" min="1"
                                 value="1" placeholder="" aria-label="value" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="A1-C1: 1">
+                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A1-C1: 1">
                         </div>
                         <div class="p-1 small-box">
                             <input id="x0_1" class="form-control form-control-sm border-black" type="number" min="1"
                                 value="1" placeholder="" aria-label="value" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="A1-C2: 1">
+                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A1-C2: 1">
                         </div>
                     </div>
                     <div class="d-flex">
                         <div class="p-1 small-box">
                             <input id="x1_0" class="form-control form-control-sm border-black" type="number" min="1"
                                 value="1" placeholder="" aria-label="value" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="A2-C1: 1">
+                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A2-C1: 1">
                         </div>
                         <div class="p-1 small-box">
                             <input id="x1_1" class="form-control form-control-sm border-black" type="number" min="1"
                                 value="1" placeholder="" aria-label="value" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="A2-C2: 1">
+                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="A2-C2: 1">
                         </div>
                     </div>
                 </div>
@@ -152,9 +156,9 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" class="btn andes-button" onclick="calculate()">Kalkulasi</button>
+                <button type="button" class="btn calc-button" onclick="calculate()">Kalkulasi</button>
             </div>
-            <div class="calculate-box mt-5 p-4 shadow-sm" style="border-radius: 8px;">
+            <div class="calculate-box mt-5 p-4 shadow-sm" style="border-radius: 8px;" id="result-box">
                 <div class="fw-bolder">Hasil Kalkulasi</div>
                 <br>
                 <div class="fw-bolder">1. Normalisasi Matriks</div>
@@ -224,9 +228,76 @@
                 </p>
                 <div>
                     <div class="card card-body detail" id="detail-1">
-                        Some placeholder content for the collapse component. This panel is hidden by default but
-                        revealed when the user
-                        activates the relevant trigger.
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" direction="ltr" width="9.9878em"
+                            height="1.97em" viewBox="0 -1.256 9.9878 1.97"
+                            style="vertical-align: -0.714em; overflow: visible; user-select: none;"><text
+                                fill="currentColor" style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(0,0)">𝑅</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 0.8px"
+                                transform="translate(0.74,0)">21</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(2.0178,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(3.1006,-0.58)">2 − 1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(3.1006,0.7)">3 − 1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(5.6278,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(6.7106,-0.58)">1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(6.7106,0.7)">2</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(7.6083,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(8.5711,0)">0,5</text>
+                            <line x1="3.1006" y1="-0.25" x2="5.23" y2="-0.25" stroke-width="0.066"
+                                stroke="currentColor"></line>
+                            <line x1="6.7106" y1="-0.25" x2="7.2106" y2="-0.25" stroke-width="0.066"
+                                stroke="currentColor"></line>
+                        </svg>
+                        <br>
+                        <br>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" direction="ltr" width="13.9127em"
+                            height="1.97em" viewBox="0 -1.256 13.9127 1.97"
+                            style="vertical-align: -0.714em; overflow: visible; user-select: none;"><text
+                                fill="currentColor" style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(0,0)">𝑅</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 0.8px"
+                                transform="translate(0.74,0)">13</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(2.0178,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(2.9806,0)">1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(3.7028,0)">+</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 2px"
+                                transform="translate(4.34,0.2)">(</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(5.063,-0.58)">2 − 1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(5.063,0.7)">3 − 1 </text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 2px"
+                                transform="translate(7.2,0.2)">)</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(7.9232,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(8.886,0)">1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(9.6082,0)">+</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(10.6354,-0.58)">1</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(10.6354,0.7)">2</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(11.5332,0)">=</text><text fill="currentColor"
+                                style="font-family: XITSMath-Regular; font-size: 1px"
+                                transform="translate(12.496,0)">1,5</text>
+                            <line x1="5.063" y1="-0.25" x2="7.1924" y2="-0.25" stroke-width="0.066"
+                                stroke="currentColor"></line>
+                            <line x1="10.6354" y1="-0.25" x2="11.1354" y2="-0.25" stroke-width="0.066"
+                                stroke="currentColor"></line>
+                        </svg>
                     </div>
                 </div>
 
