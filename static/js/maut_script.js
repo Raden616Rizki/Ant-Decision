@@ -131,7 +131,7 @@ function calculate() {
         success: function (response) {
             // console.log(response)
             let result = response.result
-            console.log(result)
+            // console.log(result)
             update_result(result)
         },
         error: function (xhr, status, error) {
@@ -201,7 +201,7 @@ function update_result(data) {
             <div class="col-1 border border-black rounded-1 super-small-box"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i+1}-C${j+1}: ${norm[i][j]}" id="n${i}_${j}">
+                data-bs-title="A${i+1}-C${j+1}: ${norm[i][j]}" id="n${i}_${j}" onclick="scroll_cal(1, 'r${i}:${j}')" style="cursor: pointer;">
                 ${norm[i][j].toFixed(3)}
             </div>
             `
@@ -317,7 +317,6 @@ function update_result(data) {
         }
         detail_utility_html += ` = `
         for (let j = 0; j < marginal[0].length; j++) {
-            console.log(':', bobot[i], marginal[i][j])
             detail_utility_html += `
             ${(bobot[j]*marginal[i][j]).toFixed(3)}
             `
@@ -333,6 +332,14 @@ function update_result(data) {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
     $('#result-box').show()
+}
+
+function scroll_cal(id, calId) {
+    open_detail_calculation(id)
+    console.log($(`#${calId}`).val())
+    $(`#detail-${id}`).animate({
+        scrollTop: $(`#${calId}`).offset().top
+    }, 500);
 }
 
 function change2matrix() {
