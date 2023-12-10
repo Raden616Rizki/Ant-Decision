@@ -16,7 +16,7 @@ def initiation(matriks, jenis, bobot):
         bobot = np.array(bobot)
     else:
         bobot = bobot
-        
+    
     matriks_ternormalisasi, max_kolom, min_kolom = normalisasi_matriks(matriks, jenis)
     matriks_marginal, euler_calc_list = hitung_marginal(matriks_ternormalisasi)
     utilitas_akhir = hitung_utilitas(matriks_marginal, bobot)

@@ -30,7 +30,7 @@ function change_matrix_shape() {
         for (let j = 0; j < kolom; j++) {
             temp_html += `
             <div class="p-1 small-box">
-                <input id="x${ i }${ j }" class="form-control form-control-sm border-black" type="number" min="1" value="1" placeholder="" aria-label="value"
+                <input id="x${ i }_${ j }" class="form-control form-control-sm border-black" type="number" min="1" value="1" placeholder="" aria-label="value"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="A${i+1}-C${j+1}">
@@ -65,7 +65,6 @@ function change_matrix_shape() {
         $('#initial-type').append(temp_html_type)
         $('#initial-weight').append(temp_html_weight)
     }
-    $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
 }
 
 function open_detail_calculation(id) {
@@ -101,7 +100,7 @@ function calculate() {
     for (var i = 0; i < baris; i++) {
         matriks[i] = []
         for (var j = 0; j < kolom; j++) {
-            value = $(`#x${i}${j}`).val()
+            value = $(`#x${i}_${j}`).val()
             matriks[i][j] = parseFloat(value)
         }
     }
@@ -291,7 +290,7 @@ function update_input_form(data) {
         for (let j = 0; j < kolom; j++) {
             temp_html += `
             <div class="p-1 small-box">
-                <input id="x${ i }${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
+                <input id="x${ i }_${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="A${i+1}-C${j+1}">
