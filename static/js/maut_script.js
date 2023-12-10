@@ -271,7 +271,7 @@ function update_result(data) {
     for (let i = 0; i < marginal.length; i++) {
         for (let j = 0; j < marginal[0].length; j++) {
             detail_marginal_html += `
-            $$U_{${i+1}:${j+1}} = \\frac{2,71828182845904523^{(${norm[i][j]})^2} - 1}{1,71} = \\frac{${exp[count]} - 1}{1,71} = ${marginal[i][j]}$$
+            $$U_{${i+1}:${j+1}} = \\frac{2,718^{(${norm[i][j].toFixed(3)})^2} - 1}{1,71} = \\frac{${exp[count].toFixed(3)} - 1}{1,71} = ${marginal[i][j].toFixed(3)}$$
             `
             count += 1
         }
@@ -281,8 +281,8 @@ function update_result(data) {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
     // Update Nilai Utilitas Akhir
-    utility = data.utilitas_akhir
-    rank = data.list_rank
+    let utility = data.utilitas_akhir
+    let rank = data.list_rank
     $('#utility-column').empty()
 
     let temp_html = ``
@@ -298,6 +298,39 @@ function update_result(data) {
     }
     $('#utility-column').append(temp_html)
     $('#utility-column [data-bs-toggle="tooltip"]').tooltip();
+
+    // Update Detail Kalkulasi Utilitas Akhir
+    $('#detail-3').empty();
+
+    let detail_utility_html = ``
+
+    for (let i = 0; i < marginal.length; i++) {
+        detail_utility_html += `$$U_{${i+1}} = `
+        for (let j = 0; j < marginal[0].length; j++) {
+            detail_utility_html += `
+            (${bobot[j]} \\times ${marginal[i][j].toFixed(3)})
+            `
+
+            if(j < marginal[0].length-1) {
+                detail_utility_html += ` + `
+            }
+        }
+        detail_utility_html += ` = `
+        for (let j = 0; j < marginal[0].length; j++) {
+            console.log(':', bobot[i], marginal[i][j])
+            detail_utility_html += `
+            ${(bobot[j]*marginal[i][j]).toFixed(3)}
+            `
+
+            if(j < marginal[0].length-1) {
+                detail_utility_html += ` + `
+            }
+        }
+        detail_utility_html += ` = ${utility[i].toFixed(3)}$$`
+    }
+
+    $('#detail-3').append(detail_utility_html)
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
     $('#result-box').show()
 }
