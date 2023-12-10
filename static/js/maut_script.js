@@ -33,7 +33,7 @@ function change_matrix_shape() {
                 <input id="x${ i }_${ j }" class="form-control form-control-sm border-black" type="number" min="1" value="1" placeholder="" aria-label="value"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i+1}-C${j+1}">
+                data-bs-title="A${i+1}-C${j+1}: 1">
             </div>
             `
         }
@@ -47,7 +47,7 @@ function change_matrix_shape() {
             <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="C${j+1}">
+            data-bs-title="C${j+1}: benefit">
                 <option selected value="benefit">Benefit</option>
                 <option value="cost">Cost</option>
             </select>
@@ -58,13 +58,17 @@ function change_matrix_shape() {
             <input id="w${j}" class="form-control form-control-sm border-black" type="number" min="1" value="1" placeholder="" aria-label="value"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="C${j+1}">
+            data-bs-title="C${j+1}: 1">
         </div>
         `
 
         $('#initial-type').append(temp_html_type)
         $('#initial-weight').append(temp_html_weight)
     }
+
+    $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
+    $('#initial-type [data-bs-toggle="tooltip"]').tooltip();
+    $('#initial-weight [data-bs-toggle="tooltip"]').tooltip();
 }
 
 function open_detail_calculation(id) {
@@ -163,7 +167,7 @@ function update_result(data) {
         <div class="col-1 border border-black rounded-1 super-small-box"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="Max-C${i}">
+            data-bs-title="Max-C${i+1}: ${max_data[i]}">
             ${max_data[i]}
         </div>
         `
@@ -172,7 +176,7 @@ function update_result(data) {
         <div class="col-1 border border-black rounded-1 super-small-box"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="Min-C${i}">
+            data-bs-title="Min-C${i+1}: ${min_data[i]}">
             ${min_data[i]}
         </div>
         `
@@ -180,6 +184,9 @@ function update_result(data) {
 
     $('#max-column').append(max_html)
     $('#min-column').append(min_html)
+
+    $('#max-column [data-bs-toggle="tooltip"]').tooltip();
+    $('#min-column [data-bs-toggle="tooltip"]').tooltip();
 
     // Update Matriks Ternormalisasi
     norm = data.matriks_ternormalisasi
@@ -194,7 +201,7 @@ function update_result(data) {
             <div class="col-1 border border-black rounded-1 super-small-box"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i}-C${j}" id="n${i}${j}">
+                data-bs-title="A${i+1}-C${j+1}: ${norm[i][j]}" id="n${i}_${j}">
                 ${norm[i][j].toFixed(3)}
             </div>
             `
@@ -203,6 +210,7 @@ function update_result(data) {
     }
 
     $('#matriks-ternormalisasi').append(norm_html)
+    $('#matriks-ternormalisasi [data-bs-toggle="tooltip"]').tooltip();
 
     // Update Matriks Marginal Utilitas
     marginal = data.matriks_marginal
@@ -217,7 +225,7 @@ function update_result(data) {
             <div class="col-1 border border-black rounded-1 super-small-box"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i}-C${j}" id="m${i}${j}">
+                data-bs-title="A${i+1}-C${j+1}: ${marginal[i][j]}" id="m${i}_${j}">
                 ${marginal[i][j].toFixed(3)}
             </div>
             `
@@ -226,6 +234,7 @@ function update_result(data) {
     }
 
     $('#matriks-marginal').append(marginal_html)
+    $('#matriks-marginal [data-bs-toggle="tooltip"]').tooltip();
 
     // Update Nilai Utilitas Akhir
     utility = data.utilitas_akhir
@@ -244,6 +253,7 @@ function update_result(data) {
         `
     }
     $('#utility-column').append(temp_html)
+    $('#utility-column [data-bs-toggle="tooltip"]').tooltip();
 }
 
 function change2matrix() {
@@ -293,7 +303,7 @@ function update_input_form(data) {
                 <input id="x${ i }_${ j }" class="form-control form-control-sm border-black" type="number" min="1" value=${matriks[i][j]} placeholder="" aria-label="value"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i+1}-C${j+1}">
+                data-bs-title="A${i+1}-C${j+1}: ${matriks[i][j]}">
             </div>
             `
         }
@@ -308,7 +318,7 @@ function update_input_form(data) {
             <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="C${j+1}">
+            data-bs-title="C${j+1}: benefit">
                 <option selected value="benefit">Benefit</option>
                 <option value="cost">Cost</option>
             </select>
@@ -328,21 +338,9 @@ function update_input_form(data) {
                     <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                     data-bs-custom-class="custom-tooltip"
-                    data-bs-title="C${j+1}">
+                    data-bs-title="C${j+1}: ${value_jenis}">
                         <option value="benefit">Benefit</option>
                         <option selected value="cost">Cost</option>
-                    </select>
-                </div>
-                `
-            } else {
-                temp_html_type = `
-                <div class="p-1">
-                    <select id="t${j}" class="super-small-box form-select form-select-sm border-black" aria-label="Small select example"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-custom-class="custom-tooltip"
-                    data-bs-title="C${j+1}">
-                        <option selected value="benefit">Benefit</option>
-                        <option value="cost">Cost</option>
                     </select>
                 </div>
                 `
@@ -353,12 +351,15 @@ function update_input_form(data) {
             <input id="w${j}" class="form-control form-control-sm border-black" type="number" min="1" value=${value_bobot} placeholder="" aria-label="value"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-custom-class="custom-tooltip"
-            data-bs-title="C${j+1}">
+            data-bs-title="C${j+1}: ${value_bobot}">
         </div>
         `
 
         $('#initial-type').append(temp_html_type)
         $('#initial-weight').append(temp_html_weight)
+
+        $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
+        $('#initial-type [data-bs-toggle="tooltip"]').tooltip();
+        $('#initial-weight [data-bs-toggle="tooltip"]').tooltip();
     }
-    $('#initial-matrix [data-bs-toggle="tooltip"]').tooltip();
 }
