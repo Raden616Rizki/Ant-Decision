@@ -201,7 +201,7 @@ function update_result(data) {
             <div class="col-1 border border-black rounded-1 super-small-box"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="A${i+1}-C${j+1}: ${norm[i][j]}" id="n${i}_${j}" onclick="scroll_cal(1, 'r${i}:${j}')" style="cursor: pointer;">
+                data-bs-title="A${i+1}-C${j+1}: ${norm[i][j]}" id="n${i}_${j}">
                 ${norm[i][j].toFixed(3)}
             </div>
             `

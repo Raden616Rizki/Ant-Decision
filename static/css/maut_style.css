@@ -31,9 +31,10 @@
 
 .detail {
     display: none;
-    background-color: #D7EFFF;
+    /* background-color: #D7EFFF; */
+    background-color: white;
     min-height: 128px;
-    max-height: 256px;
+    max-height: 512px;
     overflow: auto;
 }
 
