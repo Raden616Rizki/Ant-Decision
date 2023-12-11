@@ -336,7 +336,7 @@ function update_result(data) {
 
 function scroll_cal(id, calId) {
     open_detail_calculation(id)
-    console.log($(`#${calId}`).val())
+    console.log($(`#${calId}`).text())
     $(`#detail-${id}`).animate({
         scrollTop: $(`#${calId}`).offset().top
     }, 500);
