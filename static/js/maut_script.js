@@ -224,11 +224,11 @@ function update_result(data) {
         for (let j = 0; j < norm[0].length; j++) {
             if (jenis[j].toLowerCase().trim() == 'benefit') {
                 detail_norm_html += `
-                $$R_{${i+1}:${j+1}} = \\frac{${matriks[i][j]}-${min_data[j]}}{${max_data[j]}-${min_data[j]}} = \\frac{${matriks[i][j] - min_data[j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
+                $$R_{${i+1}:${j+1}} = \\frac{${matriks[i][j]}-${min_data[j]}}{${max_data[j]}-${min_data[j]}} = \\frac{${matriks[i][j] - min_data[j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j].toFixed(3)}$$
                 `
             } else {
                 detail_norm_html += `
-                $$R_{${i+1}:${j+1}} = 1 + \\left(\\frac{${min_data[j]}-${matriks[i][j]}}{${max_data[j]}-${min_data[j]}}\\right) = 1 + \\frac{${min_data[j] - matriks[i][j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j]}$$
+                $$R_{${i+1}:${j+1}} = 1 + \\left(\\frac{${min_data[j]}-${matriks[i][j]}}{${max_data[j]}-${min_data[j]}}\\right) = 1 + \\frac{${min_data[j] - matriks[i][j]}}{${max_data[j] - min_data[j]}} = ${norm[i][j].toFixed(3)}$$
                 `
             }
         }
