@@ -33,7 +33,8 @@
 .detail {
     display: none;
     background-color: #D7EFFF;
-    height: 128px;
+    min-height: 128px;
+    max-height: 256px;
     overflow: auto;
 }
 
