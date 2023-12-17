@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from static.python import maut
 import json
-import pandas as pd
 import csv
 
 app = Flask(__name__)

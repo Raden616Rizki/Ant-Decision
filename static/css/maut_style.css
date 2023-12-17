@@ -109,11 +109,6 @@ body{
     z-index: 1;
 }
 
-.logo-about {
-    position: absolute;
-    top: -50%;
-}
-
 #result-box {
     display: none;
 }
