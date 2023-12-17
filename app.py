@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 from static.python import maut
 import json
 import csv
+import os
 
 app = Flask(__name__)
 
@@ -22,6 +23,45 @@ def post_maut():
     result = maut.initiation(matriks, jenis, bobot)
     
     return jsonify({'message': 'success', 'result': result})
+
+@app.route('/form_to_csv', methods=['POST'])
+def form_to_csv():
+    matriks = request.form.get('matriks')
+    jenis = request.form.get('jenis')
+    bobot = request.form.get('bobot')
+    
+    matriks = json.loads(matriks)
+    jenis = json.loads(jenis)
+    bobot = json.loads(bobot)
+    empty_list = [""] * len(bobot)
+    header = []
+    
+    merge = []
+    
+    merge.append(header)
+    
+    for i in range(len(matriks)):
+        merge.append(matriks[i])
+        
+    for i in range(len(bobot)):
+        num = i+1
+        header.append(f'c{num}')
+    
+    merge.append(empty_list)
+    merge.append(jenis)
+    merge.append(empty_list)
+    merge.append(bobot)
+    
+    with open("./static/csv/data.csv", "w") as csvfile:
+        # Buat objek writer
+        writer = csv.writer(csvfile, delimiter=";")
+        # Tulis data ke file CSV
+        writer.writerows(merge)
+
+    # Download file CSV
+    file_path = os.path.join(app.root_path, 'static', 'csv', 'data.csv')
+    return file_path
+    # return send_file(file_path, as_attachment=True, download_name='data.csv', download_file=True)
 
 @app.route('/post_file_maut', methods=["POST"])
 def post_file_maut():

@@ -160,6 +160,48 @@ function calculate() {
     })
 }
 
+function download_csv() {
+    var baris = $('#baris').val()
+    var kolom = $('#kolom').val()
+
+    var matriks = []
+    var jenis = []
+    var bobot = []
+
+    for (var i = 0; i < baris; i++) {
+        matriks[i] = []
+        for (var j = 0; j < kolom; j++) {
+            value = $(`#x${i}_${j}`).val()
+            matriks[i][j] = parseFloat(value)
+        }
+    }
+
+    for (var j = 0; j < kolom; j++) {
+        value_jenis = $(`#t${j}`).val()
+        jenis[j] = value_jenis
+
+        value_bobot = $(`#w${j}`).val()
+        bobot[j] = parseFloat(value_bobot)
+    }
+
+    let form_data = new FormData()
+    form_data.append('matriks', JSON.stringify(matriks))
+    form_data.append('jenis', JSON.stringify(jenis))
+    form_data.append('bobot', JSON.stringify(bobot))
+
+    $.ajax({
+        type: 'POST',
+        url: '/form_to_csv',
+        data: form_data,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            // console.log(response)
+            window.location.href = '/static/csv/data.csv';
+        },
+    })
+}
+
 function update_result(data) {
 
     // Update Max and Column

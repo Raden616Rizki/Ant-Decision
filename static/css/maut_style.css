@@ -10,9 +10,27 @@
     opacity: 0.75;
 }
 
+.download-button {
+    color: white;
+    background-color: #65B741;
+    opacity: 1;
+}
+
 .andes-button:hover {
     color: white;
     background-color: #7B66FF;
+    opacity: 1;
+}
+
+.calc-button:hover {
+    color: white;
+    background-color: #7B66FF;
+    opacity: 1;
+}
+
+.download-button:hover {
+    color: white;
+    background-color: #1A5D1A;
     opacity: 1;
 }
 
@@ -78,6 +96,11 @@
     height: 70px;
 }
 
+.logo-main{
+    width: 70px;
+    height: 70px;
+}
+
 body{
     /* font-family: 'Aclonica', sans-serif; */
     font-family: 'Familjen Grotesk', sans-serif;
@@ -107,6 +130,11 @@ body{
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+.logo-main {
+    position: absolute;
+    top: -50%;
 }
 
 #result-box {
