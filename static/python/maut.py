@@ -1,32 +1,17 @@
-import numpy as np
 import math
 
 def initiation(matriks, jenis, bobot):
-    if type(matriks) != np.ndarray:  
-        matriks = np.array(matriks)
-    else:
-        matriks = matriks
-            
-    if type(jenis) != np.ndarray:  
-        jenis = np.array(jenis)
-    else:
-        jenis = jenis
-            
-    if type(bobot) != np.ndarray:  
-        bobot = np.array(bobot)
-    else:
-        bobot = bobot
     
     matriks_ternormalisasi, max_kolom, min_kolom = normalisasi_matriks(matriks, jenis)
     matriks_marginal, euler_calc_list = hitung_marginal(matriks_ternormalisasi)
     utilitas_akhir = hitung_utilitas(matriks_marginal, bobot)
     list_rank = perangkingan_utilitas(utilitas_akhir)
     
-    matriks = matriks.tolist()
-    jenis = jenis.tolist()
-    bobot = bobot.tolist()
-    matriks_ternormalisasi = matriks_ternormalisasi.tolist()
-    matriks_marginal = matriks_marginal.tolist()
+    matriks = matriks
+    jenis = jenis
+    bobot = bobot
+    matriks_ternormalisasi = matriks_ternormalisasi
+    matriks_marginal = matriks_marginal
     
     result = {
         'matriks': matriks,
@@ -56,13 +41,13 @@ def normalisasi_matriks(matriks, jenis):
 
   # Memperoleh nilai max dan min tiap kriteria
   for j in range(kolom):
-    max_value = float(np.max(matriks[:, j]))
-    min_value = float(np.min(matriks[:, j]))
+    max_value = max(matriks[i][j] for i in range(len(matriks)))
+    min_value = min(matriks[i][j] for i in range(len(matriks)))
 
     max_column.append(max_value)
     min_column.append(min_value)
 
-  matriks_ternormalisasi = np.zeros((baris, kolom))
+  matriks_ternormalisasi = [[0 for i in range(kolom)] for j in range(baris)]
 
   for i in range(baris):
     for j in range(kolom):
@@ -74,7 +59,7 @@ def normalisasi_matriks(matriks, jenis):
       else:
         return print('Jenis Tidak Dikenali')
 
-      matriks_ternormalisasi[i][j] = float(value)
+      matriks_ternormalisasi[i][j] = value
 
   return matriks_ternormalisasi, max_column, min_column
 
@@ -84,7 +69,7 @@ def hitung_marginal(matriks):
   baris = len(matriks)
   kolom = len(matriks[0])
 
-  matriks_marginal = np.zeros((baris, kolom))
+  matriks_marginal = [[0 for i in range(kolom)] for j in range(baris)]
   euler_calc_list = []
 
   for i in range(baris):
@@ -93,7 +78,7 @@ def hitung_marginal(matriks):
       euler_calc_list.append((euler_calc))
 
       value = (euler_calc - 1) / 1.71
-      matriks_marginal[i][j] = float(value)
+      matriks_marginal[i][j] = value
 
   return matriks_marginal, euler_calc_list
 
@@ -110,7 +95,7 @@ def hitung_utilitas(matriks, bobot):
     for j in range(kolom):
       value = matriks[i][j] * bobot[j]
 
-      utilitas_akhir[i] += float(value)
+      utilitas_akhir[i] += value
 
   return utilitas_akhir
 

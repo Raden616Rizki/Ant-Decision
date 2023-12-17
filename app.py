@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from static.python import maut
 import json
 import pandas as pd
+import csv
 
 app = Flask(__name__)
 
@@ -35,21 +36,26 @@ def post_file_maut():
     return jsonify({'message': 'success', 'result': result})
 
 def get_csv_data(file):
-    data = pd.read_csv(file, header=None)
-    
-    if data.shape[1] == 1:
-        data_temp = []
-        
-        for i in range(len(data)):
-            data_split = str(data.iloc[i].values).replace('[', '').replace(']', '').strip("'").split(';')
-            data_temp.append(data_split)
+    data = []
+    for line in file:
+        data.append(line.decode('utf-8').strip())
 
-        data = pd.DataFrame(data_temp)
+    data_temp = []
+        
+    for i in range(len(data)):
+        if data[i].find(';') != -1:
+            data_split = str(data[i]).split(';')
+        else:
+            data_split = str(data[i]).split(',')
+            
+        data_temp.append(data_split)
+
+    data = data_temp
+
+    if isinstance(data[0][0], str):
+        data = data[1:]
     
-    if type(data[0][0]) == str:
-        data = data.drop(0, axis=0)
-    
-    data_temp = data.values.tolist()
+    data_temp = data
     
     empty_row = []
     row = 0
@@ -72,8 +78,7 @@ def get_csv_data(file):
         data_list = {
             'matriks': data_temp,
         }
-        
-    # print(len(data_list))
+
     return data_list
 
 if (__name__ == '__main__'):
