@@ -1,6 +1,25 @@
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+$(document).ready(function() {
+    // Change Navbar Color
+    $(window).on('hashchange', function() {
+
+        var pageId = window.location.hash.substring(1);
+        var navbar = $('.navbar');
+
+        if (pageId === 'calculate-page' || pageId === 'about-page') {
+            navbar.removeClass('bg-info');
+            navbar.removeClass('bg-opacity-50');
+            navbar.addClass('bg-dark');
+        } else {
+            navbar.removeClass('bg-dark');
+            navbar.addClass('bg-info');
+            navbar.addClass('bg-opacity-50');
+        }
+    });
+});
+
 function change_matrix_shape() {
     var baris = $('#baris').val()
     var kolom = $('#kolom').val()

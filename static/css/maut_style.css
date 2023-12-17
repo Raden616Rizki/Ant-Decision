@@ -103,6 +103,17 @@ body{
     font-family: 'Aclonica', sans-serif;
 }
 
+.navbar-brand {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.logo-about {
+    position: absolute;
+    top: -50%;
+}
+
 #result-box {
     display: none;
 }
