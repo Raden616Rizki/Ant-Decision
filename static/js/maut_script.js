@@ -113,6 +113,11 @@ function close_detail_calculation(id) {
 }
 
 function calculate() {
+    // Close All Detail
+    close_detail_calculation(1)
+    close_detail_calculation(2)
+    close_detail_calculation(3)
+
     var baris = $('#baris').val()
     var kolom = $('#kolom').val()
 
@@ -141,6 +146,8 @@ function calculate() {
     form_data.append('jenis', JSON.stringify(jenis))
     form_data.append('bobot', JSON.stringify(bobot))
 
+    $('.clearfix').show()
+
     $.ajax({
         type: 'POST',
         url: '/post_maut',
@@ -152,10 +159,12 @@ function calculate() {
             let result = response.result
             // console.log(result)
             update_result(result)
+            $('.clearfix').hide()
         },
         error: function (xhr, status, error) {
             // console.log(error)
             alert('Enter a New Matrix or Weight!!!\nInvalid Matrix or Weight!!!')
+            $('.clearfix').hide()
         }
     })
 }
@@ -189,6 +198,8 @@ function download_csv() {
     form_data.append('jenis', JSON.stringify(jenis))
     form_data.append('bobot', JSON.stringify(bobot))
 
+    $('.clearfix').show()
+
     $.ajax({
         type: 'POST',
         url: '/form_to_csv',
@@ -198,6 +209,7 @@ function download_csv() {
         success: function (response) {
             // console.log(response)
             window.location.href = '/static/csv/data.csv';
+            $('.clearfix').hide()
         },
     })
 }
@@ -409,6 +421,8 @@ function change2matrix() {
     let form_data = new FormData()
     form_data.append('file', file)
 
+    $('.clearfix').show()
+
     $.ajax({
         type: 'POST',
         url: '/post_file_maut',
@@ -419,10 +433,12 @@ function change2matrix() {
             data = response.result
 
             update_input_form(data)
+            $('.clearfix').hide()
         },
         error: function (xhr, status, error) {
             // console.log(error)
             alert('Invalid CSV File!!!')
+            $('.clearfix').hide()
         }
     })
 }
